@@ -1,50 +1,96 @@
 import './App.css';
 import { useState } from 'react';
 
-function TodoBox({ element }) {
-  return (
-    <div key="" className="list-box">
-      <h3>{element.title}</h3>
-      <h5>{element.memo}</h5>
-      <div className="btnSpace">
-      <button className='erase'>삭제</button>
-      <button className='done'>완료</button>
-      </div>
-      
-    </div>
-  );
-}
 
 function App() {
   const [todoList, setTodoList] = useState([{
-    id: 1,
+    id: 0,
     title: "첫번째",
     memo: "메모내용",
-    isDone: false,
+    isWorking: true,
+  },
+  {
+    id: 1,
+    title: "두번째",
+    memo: "메모내용 두번째입니다.",
+    isWorking: false,
   },
   {
     id: 2,
-    title: "두번째",
-    memo: "메모내용 두번째입니다.",
-    isDone: true,
-  },
-  {
-    id: 3,
     title: "세번째",
     memo: "메모내용 세번째입니다.",
-    isDone: false,
+    isWorking: true,
   }]);
   const [title, setTitle] = useState("");
   const [memo, setMemo] = useState("");
+
+
+  
+
+  function TodoBox({ element }) {
+    return (
+      <div key={element.id} className="list-box">
+        <h3>{element.title}</h3>
+        <h5>{element.memo}</h5>
+        <div className="btnSpace">
+          <ButtonErase elId={element.id} />
+          <ButtonDone elId={element.id} />
+        </div>
+      </div>
+    );
+  }
+  function DoneBox({ element }) {
+    return (
+      <div key={element.id} className="list-box">
+        <h3>{element.title}</h3>
+        <h5>{element.memo}</h5>
+        <div className="btnSpace">
+          <ButtonErase elId={element.id} />
+        </div>
+      </div>
+    );
+  }
+  const ButtonErase = ({ elId }) => {
+    return <button className='erase' onClick={()=>clickEraseButtonHandler(elId)}>삭제</button>;
+  }
+  const ButtonDone = ({ elId }) => {
+    return <button className='done' onClick={()=>clickDoneButtonHandler(elId)}>완료</button>;
+  }
+
+  const clickEraseButtonHandler = (index) => {
+    console.log(todoList[index], index);
+    const temp = todoList.filter((elem, idx) => idx !== index);
+    setTodoList(refreshElementId(temp));
+  }
+
+
+  const clickDoneButtonHandler = (index) => {
+    console.log(`id는 ${index}`);
+    const temp2 = todoList.map((elem) => {
+      if (elem.id === index) {
+        elem.isWorking = false;
+        console.log(elem.id, elem.isWorking);
+      }
+      return elem;
+    });
+    console.log(temp2);
+    setTodoList(refreshElementId(temp2));
+  }
+  const refreshElementId = (arr) => {
+    return arr.map((elem,idx) => {
+      elem.id = idx;
+      return elem;
+    });
+  }
 
   return (
     <div className="main">
       <header>
         <div>
-          <div>제목&nbsp;&nbsp;<input onChange={(e) => {
+          <div>제목&nbsp;&nbsp;<input value={title} onChange={(e) => {
             setTitle(e.target.value);
           }} /></div>
-          <div>내용&nbsp;&nbsp;<input className='input-memo' onChange={(e) => {
+          <div>내용&nbsp;&nbsp;<input value={memo} className='input-memo' onChange={(e) => {
             setMemo(e.target.value);
           }} /></div>
         </div>
@@ -54,9 +100,11 @@ function App() {
               id: todoList.length + 1,
               title: title,
               memo: memo,
-              isDone: false,
+              isWorking: true,
             };
             setTodoList([...todoList, newList]);
+            setTitle('');
+            setMemo('');
           }}>추가하기</button>
         </div>
       </header>
@@ -65,7 +113,7 @@ function App() {
         <div className="list">
           {
             todoList
-              .filter((element) => element.isDone === true)
+              .filter((element) => element.isWorking === true)
               .map((element) => {
                 return <TodoBox element={element} />;
               })
@@ -76,9 +124,9 @@ function App() {
         <div className="list">
           {
             todoList
-              .filter((element) => element.isDone === false)
+              .filter((element) => element.isWorking === false)
               .map((element) => {
-                return <TodoBox element={element} />;
+                return <DoneBox element={element} />;
               })
           }
         </div>
