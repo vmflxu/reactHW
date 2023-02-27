@@ -7,29 +7,39 @@ function App() {
   const [title, setTitle] = useState("");
   const [memo, setMemo] = useState("");
 
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleMemoChange = (e) => {
+    setMemo(e.target.value);
+  };
+
+  const addTodo = () => {
+    const newList = {
+      id: todoList.length + 1,
+      title: title,
+      memo: memo,
+      isWorking: true,
+    };
+    setTodoList([...todoList, newList]);
+    setTitle('');
+    setMemo('');
+  };
+
+  const renderBox = (element, type) => {
+    return <Box element={element} data={todoList} setData={setTodoList} type={type} />;
+  };
+
   return (
     <div className="main">
       <header>
         <div>
-          <div>제목&nbsp;&nbsp;<input value={title} onChange={(e) => {
-            setTitle(e.target.value);
-          }} /></div>
-          <div>내용&nbsp;&nbsp;<input value={memo} className='input-memo' onChange={(e) => {
-            setMemo(e.target.value);
-          }} /></div>
+          <div>제목&nbsp;&nbsp;<input value={title} onChange={handleTitleChange} /></div>
+          <div>내용&nbsp;&nbsp;<input value={memo} className='input-memo' onChange={handleMemoChange} /></div>
         </div>
         <div>
-          <button onClick={() => {
-            const newList = {
-              id: todoList.length + 1,
-              title: title,
-              memo: memo,
-              isWorking: true,
-            };
-            setTodoList([...todoList, newList]);
-            setTitle('');
-            setMemo('');
-          }}>추가하기</button>
+          <button onClick={addTodo}>추가하기</button>
         </div>
       </header>
       <div className="contents">
@@ -38,9 +48,7 @@ function App() {
           {
             todoList
               .filter((element) => element.isWorking === true)
-              .map((element) => {
-                return <Box element={element} data={todoList} setData={setTodoList} type="todo" />;
-              })
+              .map((element) => renderBox(element, "todo"))
           }
         </div>
 
@@ -49,9 +57,7 @@ function App() {
           {
             todoList
               .filter((element) => element.isWorking === false)
-              .map((element) => {
-                return <Box element={element} data={todoList} setData={setTodoList} type="done" />;
-              })
+              .map((element) => renderBox(element, "done"))
           }
         </div>
       </div>
