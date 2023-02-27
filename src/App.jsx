@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import Contents from './components/Contents.jsx';
 
 
 function App() {
@@ -25,31 +26,6 @@ function App() {
   const [memo, setMemo] = useState("");
 
 
-  
-
-  function TodoBox({ element }) {
-    return (
-      <div key={element.id} className="list-box">
-        <h3>{element.title}</h3>
-        <h5>{element.memo}</h5>
-        <div className="btnSpace">
-          <ButtonErase elId={element.id} />
-          <ButtonDone elId={element.id} />
-        </div>
-      </div>
-    );
-  }
-  function DoneBox({ element }) {
-    return (
-      <div key={element.id} className="list-box">
-        <h3>{element.title}</h3>
-        <h5>{element.memo}</h5>
-        <div className="btnSpace">
-          <ButtonErase elId={element.id} />
-        </div>
-      </div>
-    );
-  }
   const ButtonErase = ({ elId }) => {
     return <button className='erase' onClick={()=>clickEraseButtonHandler(elId)}>삭제</button>;
   }
@@ -111,24 +87,12 @@ function App() {
       <div className="contents">
         <h2>Working..🔥</h2>
         <div className="list">
-          {
-            todoList
-              .filter((element) => element.isWorking === true)
-              .map((element) => {
-                return <TodoBox element={element} />;
-              })
-          }
+          <Contents arr={todoList} target="todo" />
         </div>
 
         <h2>Done..!🎉</h2>
         <div className="list">
-          {
-            todoList
-              .filter((element) => element.isWorking === false)
-              .map((element) => {
-                return <DoneBox element={element} />;
-              })
-          }
+          <Contents arr={todoList} target="done" />
         </div>
       </div>
     </div >
