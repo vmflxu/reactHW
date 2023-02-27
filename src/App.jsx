@@ -35,8 +35,21 @@ function App() {
     <div className="main">
       <header>
         <div>
-          <div>제목&nbsp;&nbsp;<input value={title} onChange={handleTitleChange} /></div>
-          <div>내용&nbsp;&nbsp;<input value={memo} className='input-memo' onChange={handleMemoChange} /></div>
+          {/* &nbsp 보다 마진으로 처리해야함 */}
+          <div>
+            <span
+              style={{
+                marginRight: '10px',
+              }}
+            >제목</span>
+            <input value={title} onChange={handleTitleChange} /></div>
+          <div>
+            <span
+              style={{
+                marginRight: '10px',
+              }}
+            >내용</span>
+            <input value={memo} className='input-memo' onChange={handleMemoChange} /></div>
         </div>
         <div>
           <button onClick={addTodo}>추가하기</button>

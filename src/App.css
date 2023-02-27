@@ -18,7 +18,8 @@ header {
   height: auto;
   min-height: 50px;
   border-radius: 15px;
-  background-color: lightgrey;
+  /* grey랑 gray랑 색이다름 */
+  background-color: lightgray;
   justify-content: space-between;
 }
 
