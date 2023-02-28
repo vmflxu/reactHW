@@ -3,30 +3,22 @@ import Contents from "./Contents";
 import { useState } from 'react';
 
 export default function Send() {
-    const [todoList, setTodoList] = useState([]);
-    const [title, setTitle] = useState("");
-    const [memo, setMemo] = useState("");
-
-    const entireData = {
-        todoList,
-        title,
-        memo,
-    }
-    const entireFunctions = {
-        setTodoList,
-        setTitle,
-        setMemo,
-    }
+    const [todoList, setTodoList] = useState([{
+        id: 0,
+        title : "기본",
+        memo : "메모",
+        isWorking : false,
+    }]);
 
     return (
         <div className="main">
             <Header
-                entireData={entireData}
-                entireFunctions={entireFunctions}
+                todoList={todoList}
+                setTodoList={setTodoList}
             />
             <Contents
-                entireData={entireData}
-                entireFunctions={entireFunctions}
+                todoList={todoList}
+                setTodoList={setTodoList}
             />
         </div>
     );

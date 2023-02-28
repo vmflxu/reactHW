@@ -6,7 +6,6 @@ export default function Listing({todoList, setTodoList, boardName}) {
     return todoList
         .filter((element) => element.isWorking === isWorking)
         .map((element) => {
-            console.log("Listing에서",element);
             return (
                 <Box
                     todoList={todoList}

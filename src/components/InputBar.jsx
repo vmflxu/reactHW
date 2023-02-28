@@ -1,16 +1,36 @@
+import { useState } from "react";
 import DrawInput from "./DrawInput";
-import DrawBtnAdd from "./DrawBtnAdd";
+import Button from "./Button";
+// import { inputChangeHandler } from "../btnfunctions";
 
-export default function InputBar({ entireData, entireFunctions }) {
-    const {todoList, title, memo} = entireData;
-    const {setTodoList, setTitle, setMemo} = entireFunctions;
-    
+export default function InputBar({ todoList, setTodoList }) {
+    const [title, setTitle] = useState('');
+    const [memo, setMemo] = useState('');
+
+    const addBtnHandler = () => {
+        const addedList = {
+            id: todoList.length,
+            title: title,
+            memo: memo,
+            isWorking: true,
+        };
+        setTodoList([...todoList, addedList]);
+        setTitle('');
+        setMemo('');
+    }
+
     return (
-        <div>
-            <DrawInput target={title} category={"title"} setFunc={setTitle} />
-            <DrawInput target={memo} category={"memo"} setFunc={setMemo} />
-            <DrawBtnAdd entireData={entireData} entireFunctions={entireFunctions} />
-        </div>
+        <>
+            <div>
+                <DrawInput target={title} category={"title"} setFunc={setTitle} />
+                <DrawInput target={memo} category={"memo"} setFunc={setMemo} />
+            </div>
+
+            <div>
+                <Button type={'Add'} onClick={addBtnHandler} />
+            </div>
+
+        </>
     );
 };
 

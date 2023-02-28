@@ -1,5 +1,4 @@
 import Listing from "./Listing";
-import Test from "./Test";
 
 export default function Board({ todoList, setTodoList, boardName }) {
 
@@ -7,7 +6,7 @@ export default function Board({ todoList, setTodoList, boardName }) {
 
     return (
         <div className="board">
-            <span className="part-title">{boardName + textRest}</span>
+            <span className="part-title">{`${boardName} ${textRest}`}</span>
             <div className="list">
                 {/* <Test /> */}
                 <Listing

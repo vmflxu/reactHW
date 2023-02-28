@@ -1,8 +1,6 @@
 import Board from "./Board";
 
-export default function Contents({entireData, entireFunctions}) {
-    const todoList = entireData.todoList;
-    const setTodoList = entireFunctions.setTodoList;
+export default function Contents({todoList, setTodoList}) {
 
     return (
         <div className='contents'>

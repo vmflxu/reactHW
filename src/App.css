@@ -23,7 +23,7 @@ header {
   background-color: lightgrey;
   justify-content: space-between;
 }
-header > div> div> span{
+header > div > div > span{
   padding-right: 10px;
 }
 header>div {
@@ -40,7 +40,7 @@ header>div>div {
   margin-left: 15px;
 }
 
-header>div>button {
+.add {
   cursor: pointer;
   font-size: small;
   font-weight: bold;
@@ -51,7 +51,7 @@ header>div>button {
   background-color: lightslategray;
   margin:auto;
 }
-header>div>button:hover {
+.add:hover {
   border: 1px solid green;
   color: white;
   background-color: green;

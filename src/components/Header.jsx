@@ -1,13 +1,13 @@
 import InputBar from "./InputBar";
 
 
-export default function Header({ entireData, entireFunctions }) {
+export default function Header({ todoList, setTodoList }) {
 
     return (
         <header>
             <InputBar
-                entireData={entireData}
-                entireFunctions={entireFunctions}
+                todoList={todoList}
+                setTodoList={setTodoList}
             />
         </header>
     );
