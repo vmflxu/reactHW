@@ -1,7 +1,9 @@
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .App {
   text-align: center;
 }
-
 .main {
   display: flex;
   align-content: center;
@@ -17,11 +19,13 @@ header {
   display: flex;
   height: auto;
   min-height: 50px;
-  border-radius: 15px;
+  border-radius: 0px;
   background-color: lightgrey;
   justify-content: space-between;
 }
-
+header > div> div> span{
+  padding-right: 10px;
+}
 header>div {
   margin : auto 15px;
   align-items: center;
@@ -52,13 +56,15 @@ header>div>button:hover {
   color: white;
   background-color: green;
 }
-
 .contents{
-  display: block;  
+  display: block;
+  background-color: beige;
+  padding: 20px 20px 20px 20px;
 }
 input {
   border: 1px solid lightgrey;
   border-radius: 5px;
+  height: 1.5rem;
   box-shadow: 0px 0px 2px black;
 }
 .list-box{
@@ -70,10 +76,27 @@ input {
 
   width: fit-content;
   min-width: 150px;
-  height: 130px;
-  border-radius: 15px;
-  border: 2px solid white;
-  box-shadow: 0px 0px 10px black;
+  height: 100px;
+  /* border-radius: 15px; */
+  box-shadow: 2px 2px 5px gray;
+}
+.bg-todo{
+  background-color: white;
+  border: 1px solid gray;
+}
+.bg-todo:hover{
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px black;
+}
+.bg-done{
+  background-color: white;
+  border: 1px solid gray;
+}
+.bg-done:hover{
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px black;
 }
 .list {
   display: flex;
@@ -81,12 +104,13 @@ input {
   align-items: center;
   justify-content: left;
   flex-direction: row;
-  gap: 15px;
+  padding : 0px 40px 40px 40px;
+  gap: 25px;
 }
 .btnSpace{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
   flex-direction: row;
   gap : 5px;
 }
@@ -127,4 +151,28 @@ h5{
   margin : 10px 0px;
   height : auto;
   min-height: 60px;
+}
+
+.part-title{
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 10px 20px;
+}
+.title-todo{
+  color:white;
+}
+.todo{
+  background-color: white;
+  border: 2px solid gray;
+}
+.done{
+  background-color: white;
+}
+.board{
+  background-color: white;
+  border: 1px solid gray;
+}
+.blank{
+  height: 100px;
 }

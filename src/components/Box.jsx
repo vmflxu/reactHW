@@ -1,32 +1,14 @@
-import ButtonErase from "./ButtonErase";
-import ButtonDoneOrCancel from "./ButtonDoneOrCancel";
+import BoxTitle from "./BoxTitle";
+import BoxMemo from "./BoxMemo";
+import ButtonSpace from "./ButtonSpace";
 
+export default function Box({ todoList, element, setTodoList, type }) {
 
-function Box({ element, data, setData, type }) {
-    if (type === "todo") {
-        return (
-            <div key={element.id} className="list-box">
-                <h3>{element.title}</h3>
-                <h5>{element.memo}</h5>
-                <div className="btnSpace">
-                    <ButtonErase elId={element.id} data={data} setData={setData} />
-                    <ButtonDoneOrCancel elId={element.id} data={data} setData={setData} type="done" />
-                </div>
-            </div>
-        );
-    } else {
-        return (
-            <div key={element.id} className="list-box">
-                <h3>{element.title}</h3>
-                <h5>{element.memo}</h5>
-                <div className="btnSpace">
-                    <ButtonErase elId={element.id} data={data} setData={setData} />
-                    <ButtonDoneOrCancel elId={element.id} data={data} setData={setData} type="cancel" />
-                </div>
-            </div>
-        );
-    }
+    return (
+        <div key={element.id} className="list-box bg-todo">
+            <BoxTitle title={element.title} />
+            <BoxMemo memo={element.memo} />
+            <ButtonSpace todoList={todoList} element={element} setTodoList={setTodoList} type={type} />
+        </div>
+    );
 }
-
-
-export default Box;
