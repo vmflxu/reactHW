@@ -1,3 +1,7 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -8,23 +12,58 @@
   justify-content: center;
   flex-direction: column;
   margin: 0px auto;
-  width: 60%;
+  width:100vw;
+  max-width: 1100px;
 }
-.input-memo{
-  width:400px;
-}
+
 header {
   display: flex;
   height: auto;
   min-height: 50px;
-  border-radius: 15px;
-  background-color: lightgrey;
+  border-radius: 0px;
   justify-content: space-between;
 }
 
-header>div {
-  margin : auto 15px;
+.input-box {
+  margin: auto 20px;
+  height: 1.5rem;
   align-items: center;
+}
+
+header>div {
+  margin: auto 15px;
+  height: 1.5rem;
+  align-items: center;
+}
+
+.input-title {
+  display: flex-block;
+  text-align: center;
+  align-items: center;
+  padding: 4px 10px 3px 10px;
+  width: fit-content;
+  border-top: 1px solid darkslategray;
+  border-left: 1px solid darkslategray;
+  border-bottom: 1px solid darkslategray;
+  border-top-left-radius: 8px;
+  font-weight: 300;
+  background-color: darkslategray;
+  color: white;
+}
+
+.input-group {
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0px 0px 2px black;
+}
+
+input {
+  border-top: 1px solid darkslategray;
+  border-right: 1px solid darkslategray;
+  border-bottom: 1px solid darkslategray;
+  border-bottom-right-radius: 8px;
+  border-left: 1px solid darkslategray;
+  height: 1.5rem;
 }
 
 header>div>div {
@@ -33,98 +72,171 @@ header>div>div {
   height: fit-content;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 15px;
+  margin-right: 15px;
 }
 
-header>div>button {
+.add {
   cursor: pointer;
   font-size: small;
   font-weight: bold;
   border: 1px solid lightslategray;
-  padding : 5px 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   color: white;
   background-color: lightslategray;
-  margin:auto;
+  margin: auto;
 }
-header>div>button:hover {
-  border: 1px solid green;
+
+.add:hover {
+  border: 1px solid darkslategray;
   color: white;
-  background-color: green;
+  background-color: darkslategray;
 }
 
-.contents{
-  display: block;  
-}
-input {
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  box-shadow: 0px 0px 2px black;
-}
-.list-box{
+.contents {
   display: flex;
-  justify-items: center;
-  align-items: left;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  padding: 15px;
-
-  width: fit-content;
-  min-width: 150px;
-  height: 130px;
-  border-radius: 15px;
-  border: 2px solid white;
-  box-shadow: 0px 0px 10px black;
+  gap: 20px;
+  padding: 20px 20px 20px 20px;
 }
+
+.box-title {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.box-memo {
+  margin: auto 10px 10px 10px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.list-box {
+  display: block;
+  position: relative;
+  width: fit-content;
+  padding : 10px 20px 0px 5px;
+  min-width: 50px;
+  min-height: 100px;
+  height: auto;
+
+  background-color: lightyellow;
+  box-shadow: 2px 2px 5px gray;
+}
+
+.Todo {
+  background-color: lightyellow;
+}
+
+.Todo:hover {
+  background-color: rgb(255, 255, 128);
+  box-shadow: 2px 2px 10px black;
+}
+
+.Done {
+  background-color: rgb(216, 255, 216);
+}
+
+.Done:hover {
+  background-color: rgb(161, 255, 176);
+  box-shadow: 2px 2px 10px black;
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: left;
   flex-direction: row;
-  gap: 15px;
-}
-.btnSpace{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap : 5px;
-}
-.btnSpace > button {
-  cursor: pointer;
-  width: 50px;
-  height: 20px;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  font-weight: bold;
+  padding: 40px 40px 40px 40px;
+  gap: 25px;
 }
 .erase {
-  background-color: lightcoral;
-  border : 1px solid white;
-  color : black;
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  top: 0px;
+  right: 0px;
+  padding : 0px;
+  border: 0px solid white;
+  background-color: transparent;
+  color: grey;
 }
+
 .erase:hover {
-  background-color: red;
-  border : 1px solid red;
-  box-shadow: 0px 0px 5px black;
-  color : white;
+  color: red;
 }
-.done-or-cancel {
-  background-color: lightgreen;
-  border : 1px solid white;
-  color: black;
+
+.todo-done {
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  bottom: 0px;
+  right: 0px;
+  padding: 0px;
+  border: 0px solid white;
+  background-color: transparent;
+  color: grey;
 }
-.done-or-cancel:hover {
-  background-color: green;
-  border : 1px solid green;
-  box-shadow: 0px 0px 5px black;
+
+.todo-done:hover {
+  color: red;
+}
+
+.done-todo {
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  bottom: 0px;
+  right: 0px;
+  padding: 0px;
+  border: 0px solid white;
+  background-color: transparent;
+  color: grey;
+}
+
+.done-todo:hover {
+  color: red;
+}
+
+h3 {
+  margin: 0px;
+  height: auto;
+  color: goldenrod
+}
+
+h5 {
+  margin: 10px 0px;
+  height: 50px;
+  min-height: 60px;
+}
+
+.part-title {
+  display: block;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 10px 20px;
+}
+
+.title-todo {
   color: white;
 }
-h3{
-  margin : 0px;
+
+.todo {
+  background-color: white;
+  border: 2px solid gray;
 }
-h5{
-  margin : 10px 0px;
-  height : auto;
-  min-height: 60px;
+
+.done {
+  background-color: white;
+}
+
+.board {
+  width: 100%;
+  background-color: white;
+  border: 2px do rgb(196, 192, 0);
 }
