@@ -1,4 +1,5 @@
-import Button from "./Button";
+import Button from "../Button";
+
 
 export default function ButtonSpace({ todoList, element, setTodoList, type }) {
 
@@ -26,9 +27,9 @@ export default function ButtonSpace({ todoList, element, setTodoList, type }) {
         setTodoList(refreshElementId(temp));
     }
 
-
     return (
-        <div className="btnSpace">
+        // <div className="btnSpace">
+        <>
             <Button
                 type={'erase'}
                 onClick={eraseBtnHandler}
@@ -37,6 +38,8 @@ export default function ButtonSpace({ todoList, element, setTodoList, type }) {
                 type={type}
                 onClick={otherwiseBtnHandler}
             />
-        </div>
+        </>
+
+        // </div>
     );
 }

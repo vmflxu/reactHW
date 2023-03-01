@@ -1,9 +1,11 @@
-*{
+* {
   font-family: 'Noto Sans KR', sans-serif;
 }
+
 .App {
   text-align: center;
 }
+
 .main {
   display: flex;
   align-content: center;
@@ -12,23 +14,56 @@
   margin: 0px auto;
   width: 60%;
 }
-.input-memo{
-  width:400px;
-}
+
 header {
   display: flex;
   height: auto;
   min-height: 50px;
   border-radius: 0px;
-  background-color: lightgrey;
   justify-content: space-between;
 }
-header > div > div > span{
-  padding-right: 10px;
-}
-header>div {
-  margin : auto 15px;
+
+.input-box {
+  margin: auto 20px;
+  height: 1.5rem;
   align-items: center;
+}
+
+header>div {
+  margin: auto 15px;
+  height: 1.5rem;
+  align-items: center;
+}
+
+.input-title {
+  display: flex-block;
+  text-align: center;
+  align-items: center;
+  padding: 4px 10px 3px 10px;
+  width: fit-content;
+  border-top: 1px solid darkslategray;
+  border-left: 1px solid darkslategray;
+  border-bottom: 1px solid darkslategray;
+  border-top-left-radius: 8px;
+  font-weight: 300;
+  background-color: darkslategray;
+  color: white;
+  /* box-shadow: 0px 0px 2px black; */
+}
+
+.input-group {
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0px 0px 2px black;
+}
+
+input {
+  border-top: 1px solid darkslategray;
+  border-right: 1px solid darkslategray;
+  border-bottom: 1px solid darkslategray;
+  border-bottom-right-radius: 8px;
+  border-left: 1px solid darkslategray;
+  height: 1.5rem;
 }
 
 header>div>div {
@@ -37,7 +72,7 @@ header>div>div {
   height: fit-content;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .add {
@@ -45,134 +80,175 @@ header>div>div {
   font-size: small;
   font-weight: bold;
   border: 1px solid lightslategray;
-  padding : 5px 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   color: white;
   background-color: lightslategray;
-  margin:auto;
+  margin: auto;
 }
+
 .add:hover {
-  border: 1px solid green;
+  border: 1px solid darkslategray;
   color: white;
-  background-color: green;
+  background-color: darkslategray;
 }
-.contents{
-  display: block;
-  background-color: beige;
+
+.contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
   padding: 20px 20px 20px 20px;
 }
-input {
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  height: 1.5rem;
-  box-shadow: 0px 0px 2px black;
-}
-.list-box{
-  display: flex;
-  justify-items: center;
-  align-items: left;
-  flex-direction: column;
-  padding: 15px;
 
+.box-title {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.box-memo {
+  margin: auto 10px 10px 10px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.list-box {
+  display: block;
+  position: relative;
   width: fit-content;
-  min-width: 150px;
+  padding : 10px 20px 0px 5px;
+  min-width: 50px;
   height: 100px;
-  /* border-radius: 15px; */
+
+  background-color: lightyellow;
   box-shadow: 2px 2px 5px gray;
 }
-.bg-todo{
-  background-color: white;
-  border: 1px solid gray;
+
+.Todo {
+  background-color: lightyellow;
 }
-.bg-todo:hover{
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 2px 2px 5px black;
+
+.Todo:hover {
+  background-color: rgb(255, 255, 128);
+  box-shadow: 2px 2px 10px black;
 }
-.bg-done{
-  background-color: white;
-  border: 1px solid gray;
+
+.Done {
+  background-color: rgb(199, 248, 199);
 }
-.bg-done:hover{
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 2px 2px 5px black;
+
+.Done:hover {
+  background-color: rgb(142, 253, 160);
+  box-shadow: 2px 2px 10px black;
 }
+
 .list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: left;
   flex-direction: row;
-  padding : 0px 40px 40px 40px;
+  padding: 40px 40px 40px 40px;
   gap: 25px;
 }
-.btnSpace{
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  flex-direction: row;
-  gap : 5px;
+
+.btnSpace {
+  display: block;
+  z-index: 50;
+  position: relative;
+  text-align: right;
 }
-.btnSpace > button {
+
+.btnSpace>button {
   cursor: pointer;
-  width: 50px;
-  height: 20px;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  font-weight: bold;
+  /* border-radius: 10px; */
+  /* font-size: 0.7rem; */
+  /* font-weight: bold; */
+  background-color: transparent;
 }
+
 .erase {
-  background-color: lightcoral;
-  border : 1px solid white;
-  color : black;
+  position: absolute;
+  z-index: 5;
+  top: 0px;
+  right: 0px;
+  padding : 0px;
+  border: 0px solid white;
+  background-color: transparent;
+  color: grey;
 }
+
 .erase:hover {
-  background-color: red;
-  border : 1px solid red;
-  box-shadow: 0px 0px 5px black;
-  color : white;
+  color: red;
 }
-.done-or-cancel {
-  background-color: lightgreen;
-  border : 1px solid white;
-  color: black;
+
+.todo-done {
+  position: absolute;
+  z-index: 5;
+  bottom: 0px;
+  right: 0px;
+  padding: 0px;
+  border: 0px solid white;
+  background-color: transparent;
+  color: grey;
 }
-.done-or-cancel:hover {
-  background-color: green;
-  border : 1px solid green;
-  box-shadow: 0px 0px 5px black;
-  color: white;
+
+.todo-done:hover {
+  color: red;
 }
-h3{
-  margin : 0px;
+
+.done-todo {
+  position: absolute;
+  z-index: 5;
+  bottom: 0px;
+  right: 0px;
+  padding: 0px;
+  border: 0px solid white;
+  background-color: transparent;
+  color: grey;
 }
-h5{
-  margin : 10px 0px;
-  height : auto;
+
+.done-todo:hover {
+  color: red;
+}
+
+h3 {
+  margin: 0px;
+  height: auto;
+  color: goldenrod
+}
+
+h5 {
+  margin: 10px 0px;
+  height: 50px;
   min-height: 60px;
 }
 
-.part-title{
+.part-title {
   display: block;
+  color: white;
   font-weight: bold;
   font-size: 24px;
   padding: 10px 20px;
 }
-.title-todo{
-  color:white;
+
+.title-todo {
+  color: white;
 }
-.todo{
+
+.todo {
   background-color: white;
   border: 2px solid gray;
 }
-.done{
+
+.done {
   background-color: white;
 }
-.board{
+
+.board {
+  width: 100%;
   background-color: white;
-  border: 1px solid gray;
-}
-.blank{
-  height: 100px;
+  border: 2px do rgb(196, 192, 0);
 }

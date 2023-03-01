@@ -1,3 +1,5 @@
+import { BiArrowFromBottom, BiX, BiCheck } from "react-icons/bi";
+
 export default function Button({ type, onClick }) {
     const factor = {
         cssClass : '',
@@ -6,23 +8,23 @@ export default function Button({ type, onClick }) {
 
     switch (type) {
         case 'Todo':
-            factor.cssClass = 'done-or-cancel';
-            factor.btnName = '완료';
+            factor.cssClass = 'todo-done';
+            factor.btnName = <BiCheck size={'20'} />;
             break;
         case 'Done':
-            factor.cssClass = 'done-or-cancel';
-            factor.btnName = '취소';
+            factor.cssClass = 'done-todo';
+            factor.btnName = <BiArrowFromBottom size={'20'} />;
             break;
         case 'Add':
             factor.cssClass = 'add';
-            factor.btnName = '추가하기';
+            factor.btnName = 'Submit';
             break;
         default:
             factor.cssClass = 'erase';
-            factor.btnName = '삭제';
+            factor.btnName = <BiX size={'20'} />;
             break;
     }
     // console.log(factor);
-    // console.log(onClick);
+    // console.log(onClick); 
     return <button className={factor.cssClass} onClick={onClick}>{factor.btnName}</button>;
 }
