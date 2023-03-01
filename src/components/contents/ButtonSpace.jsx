@@ -28,7 +28,6 @@ export default function ButtonSpace({ todoList, element, setTodoList, type }) {
     }
 
     return (
-        // <div className="btnSpace">
         <>
             <Button
                 type={'erase'}
@@ -39,7 +38,5 @@ export default function ButtonSpace({ todoList, element, setTodoList, type }) {
                 onClick={otherwiseBtnHandler}
             />
         </>
-
-        // </div>
     );
 }
